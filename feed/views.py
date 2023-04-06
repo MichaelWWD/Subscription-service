@@ -10,9 +10,6 @@ class ContentViewSet(ModelViewSet):
     serializer_class = serializers.ContentSerializer
     permission_classes = [IsAuthenticated]
 
-    def get_serializer_context(self):
-        return {'user_id': self.request.user}
-
 
 class SubscriptionPlanViewSet(ModelViewSet):
     queryset = models.SubscriptionPlan.objects.all()

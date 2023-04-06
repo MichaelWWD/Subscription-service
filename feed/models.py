@@ -52,8 +52,8 @@ class Subscription(models.Model):
         ('expired', 'Expired'),
         ('canceled', 'Canceled'),
     )
-    trainer = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='trainer_subscriptions')
-    subscriber = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='subscriber_subscriptions')
+    trainer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='trainer_subscriptions')
+    subscriber = models.ForeignKey(User, on_delete=models.CASCADE, related_name='subscriber_subscriptions')
     service = models.ForeignKey(SubscriptionPlan, on_delete=models.PROTECT)
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField(default=None)
