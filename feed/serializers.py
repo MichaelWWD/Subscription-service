@@ -1,6 +1,12 @@
 from rest_framework import serializers
 from . import models
 
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Profile
+        fields = ['id', 'user', 'is_trainer', 'created_at']
+
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Content
@@ -16,4 +22,4 @@ class SubscriptionPlanSerializer(serializers.ModelSerializer):
 class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Subscription
-        fields = ['trainer', 'subscriber', 'service', 'start_date', 'status', 'created_at', 'updated_at']
+        fields = ['id','trainer', 'subscriber', 'service', 'start_date', 'status', 'created_at', 'updated_at']

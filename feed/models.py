@@ -1,4 +1,4 @@
-from datetime import timedelta, timezone
+from datetime import timedelta, datetime
 from django.db import models
 from django.conf import settings
 
@@ -64,11 +64,11 @@ class Subscription(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             # If this is a new subscription, set the end date based on the plan
-            self.end_date = timezone.now() + timedelta(days=self.service.duration_days)
+            self.end_date = datetime.now() + timedelta(days=self.service.duration_days)
         super().save(*args, **kwargs)
 
     def is_active(self):
-        return self.status == 'active' and self.end_date > timezone.now()
+        return self.status == 'active' and self.end_date > datetime.now()
 
     def cancel(self):
         self.status = 'canceled'
@@ -79,7 +79,7 @@ class Subscription(models.Model):
             self.end_date += timedelta(days=self.service.duration_days)
         else:
             self.status = 'active'
-            self.end_date = timezone.now() + timedelta(days=self.service.duration_days)
+            self.end_date = datetime.now() + timedelta(days=self.service.duration_days)
         self.save()
 
 

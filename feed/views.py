@@ -5,6 +5,13 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from . import serializers, models
 
+
+class ProfileViewSet(ModelViewSet):
+    queryset = models.Profile.objects.all()
+    serializer_class = serializers.ProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+
 class ContentViewSet(ModelViewSet):
     queryset = models.Content.objects.all()
     serializer_class = serializers.ContentSerializer
