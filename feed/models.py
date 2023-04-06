@@ -20,7 +20,7 @@ class Profile(models.Model):
 
 class Content(models.Model):
     #  Entities : Images, Text , 
-    owner = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     text  = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -33,6 +33,7 @@ class SubscriptionPlan(models.Model):
         (BASIC_TIER, 'Basic'),
         (PREMIUM_TIER, 'Premium'),
     ]
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.TextField()
     description = models.TextField()
     tier = models.CharField(max_length=15, choices=TIER_OPTIONS, default=BASIC_TIER)

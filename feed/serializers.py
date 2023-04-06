@@ -4,7 +4,13 @@ from . import models
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Content
-        fields = ['id', 'text', 'created_at']
+        fields = ['id', 'user', 'text', 'created_at']
+
+    def create(self, validated_data):
+        user = self.context['user_id']
+        return models.Content.objects.create(user_id=user.id, **validated_data)
+
+
 
 
 class SubscriptionPlanSerializer(serializers.ModelSerializer):
@@ -15,5 +21,5 @@ class SubscriptionPlanSerializer(serializers.ModelSerializer):
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.SubscriptionPlan
+        model = models.Subscription
         fields = ['service', 'start_date', 'status', 'created_at', 'updated_at']
