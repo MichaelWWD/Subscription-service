@@ -10,7 +10,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ContentSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Content
-        fields = ['id', 'user', 'text', 'created_at']
+        fields = ['id', 'text', 'created_at']
 
 
 class SubscriptionPlanSerializer(serializers.ModelSerializer):
@@ -22,4 +22,4 @@ class SubscriptionPlanSerializer(serializers.ModelSerializer):
 class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Subscription
-        fields = ['id','trainer', 'subscriber', 'service', 'start_date', 'status', 'created_at', 'updated_at']
+        fields = ['id','trainer', 'subscriber', 'service', 'start_date', 'end_date','status', 'created_at', 'updated_at']

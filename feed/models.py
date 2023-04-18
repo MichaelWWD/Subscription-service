@@ -83,6 +83,22 @@ class Subscription(models.Model):
         self.save()
 
 
+# class SubscriptionManager:
+#     def __init__(self, subscription):
+#         self.subscription = subscription
+
+    # def charge(self, amount):
+    #     # Implement payment gateway integration logic here
+    #     payment = Payment(subscription=self.subscription, amount=amount)
+    #     payment.save()
+
+    # def cancel(self):
+    #     self.subscription.cancel()
+
+    # def renew(self):
+    #     self.subscription.renew()
+    #     self.charge(self.subscription.plan.price)
+
 # class Payment(models.Model):
 #     subscription = models.ForeignKey(Subscription, on_delete=models.CASCADE)
 #     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -92,20 +108,5 @@ class Subscription(models.Model):
 #     def __str__(self):
 #         return f'{self.subscription} - {self.amount}'
 
-# class SubscriptionManager:
-#     def __init__(self, subscription):
-#         self.subscription = subscription
-
-#     def charge(self, amount):
-#         # Implement payment gateway integration logic here
-#         payment = Payment(subscription=self.subscription, amount=amount)
-#         payment.save()
-
-#     def cancel(self):
-#         self.subscription.cancel()
-
-#     def renew(self):
-#         self.subscription.renew()
-#         self.charge(self.subscription.plan.price)
 
 
